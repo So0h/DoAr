@@ -23,4 +23,18 @@ router.post('/upload', authenticateToken, async (req, res) => {
   res.json({ message: 'Model uploaded', modelId: model._id });
 });
 
+// List all models for the logged-in user
+router.get('/list', authenticateToken, async (req, res) => {
+  const models = await Model.find({ userId: req.user.userId });
+  res.json(models);
+});
+
+// Retrieve a specific model by ID
+router.get('/:id', authenticateToken, async (req, res) => {
+  const model = await Model.findOne({ _id: req.params.id, userId: req.user.userId });
+  if (!model) return res.status(404).json({ message: 'Model not found' });
+  res.json(model);
+});
+
+
 module.exports = router;
