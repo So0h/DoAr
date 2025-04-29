@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
-const ModelSchema = new mongoose.Schema({
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  filename: String,
-  originalName: String,
-  edited: { type: Boolean, default: false },
-  createdAt: { type: Date, default: Date.now }
+
+const modelSchema = new mongoose.Schema({
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  originalName: { type: String, required: true },
+  mainFile: { type: String, required: true }, // .gltf or .glb
+  uploadId: { type: String, required: true }, // userId as string
+  edited: { type: Boolean, default: false }
 });
-module.exports = mongoose.model('Model', ModelSchema);
+
+module.exports = mongoose.model('Model', modelSchema);
