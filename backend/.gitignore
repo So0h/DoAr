@@ -1,4 +1,4 @@
-backend/uploads/
-backend/node_modules
-backend/package-lock.json
-backend/.env
+uploads/
+node_modules
+package-lock.json
+.env

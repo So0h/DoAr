@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api',  // <-- your backend URL, adjust if needed
+  baseURL: import.meta.env.REACT_APP_BASE_URL,
 });
+
 
 // Auth APIs
 export const login = (data) => api.post('/auth/login/', data);

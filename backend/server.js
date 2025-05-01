@@ -23,7 +23,11 @@ mongoose.connect(process.env.MONGO_URI, {
 
 // Middleware
 app.use(helmet());
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors({
+  origin: "https://www.thedoar.com",
+  credentials: true,
+}));
+
 app.use(express.json({ limit: '50mb' })); // Needed for canvas image
 app.use(express.urlencoded({ extended: true, limit: '50mb' })); // Parse FormData
 app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
